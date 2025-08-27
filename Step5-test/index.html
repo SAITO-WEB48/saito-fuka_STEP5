@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>表示</title>
+    <style>
+        .highlight{
+            background-color: greenyellow;
+            border: 2px solid blueviolet;
+            padding: 5px;
+        }
+        table{
+            border-collapse:collapse;
+            margin-top:15px;
+            width:300px;
+        }
+        th,td{
+            border:1px solid #333;
+            padding: 8px;
+        }
+        button{
+            padding: 4px 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="textInput" />
+
+    <button id="btn">表示</button>
+
+    <button id="colorbtn">背景色を変更</button>
+
+    <div id="displayArea"></div>
+
+    <table id="dataTable">
+        <tr>
+            <th>表示</th>
+            <th>操作</th>
+        </tr>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
