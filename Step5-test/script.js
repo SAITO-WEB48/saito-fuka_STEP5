@@ -33,7 +33,14 @@ document.getElementById("btn").addEventListener("click",function(){
    //3未満「表示」ボタン復活
       if (addCount < 3){
          document.getElementById("btn").style.display="";
-      }
+
+   //カウント
+   let i=1;
+   while(i<=5){
+      console.log('ループ回数:${i}');
+      i++;
+   }
+   }
 });
 
    cell2.appendChild(delBtn);
