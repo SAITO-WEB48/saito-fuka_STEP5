@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        // すでに user_id が blogs テーブルに存在するため、何もしない
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        // user_id をロールバックで削除したい場合のみ使用
+        // Schema::table('blogs', function (Blueprint $table) {
+        //     $table->dropColumn('user_id');
+        // });
+    }
+};
+

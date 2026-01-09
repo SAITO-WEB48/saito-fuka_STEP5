@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== 共通リセット（最低限） ===== */
+* { box-sizing: border-box; }
+body{
+  margin: 0;
+  padding-top: 64px; /* ヘッダー分 */
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+/* ===== ヘッダー ===== */
+.layout_header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  height: 64px;
+  display: flex;
+  align-items:center;
+
+  background-color: #fcfafa;
+  border-bottom: 1px solid #06ffbd;
+  box-shadow: 0 2px 6px rgba(24, 254, 239, 0.06);
+}
+
+.layout_header__nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.layout_header__link {
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.layout_header__link:hover {
+  background: #f3f3f3;
+}
+
+.layout_header__auth {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.layout_header__user {
+  font-size: 14px;
+  color: #555;
+}
+
+.layout_header__button:hover {
+  background: #f3f3f3;
+}
+
+/* ログインボタン */
+.layout_header__login {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.layout_header__login:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.35);
+}
+
+/* ===== main / footer ===== */
+.layout_main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+
+.layout_footer {
+  margin-top: 40px;
+  background-color: #32ffda;
+}
+
+.layout_footer__text {
+  display: block;
+  text-align: center;
+  padding: 12px 16px;
+  color: #0b3b33; 
+  font-weight: 600;
+}
+
+/* ログアウトボタン */
+.logout-btn {
+  padding: 8px 14px;
+  background-color: #fe21c7;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.logout-btn:hover {
+  background-color: #d10aa3; /* ここは好きな色でOK */
+}
+
+.products-container{
+  max-width: 1000px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 28px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* 検索フォーム */
+.search-form{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin: 18px 0 22px;
+}
+
+.search-form input{
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+
+.search-form input[name="keyword"]{ width: 260px; }
+.search-form input[name="min_price"],
+.search-form input[name="max_price"]{ width: 140px; }
+
+.search-tilde{ color:#777; }
+
+.search-btn{
+  height: 40px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* テーブル */
+.table-wrap{ overflow-x: auto; }
+
+.products-table{
+  width:100%;
+  border-collapse: collapse;
+}
+
+.products-table th{
+  text-align:left;
+  padding: 12px 10px;
+  border-bottom: 2px solid #eee;
+  color:#444;
+  font-weight:600;
+}
+
+.products-table td{
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.col-desc{ color:#666; }
+.col-price{ text-align:right; width:120px; }
+
+/* 画像の仮サムネ */
+.thumb{
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  border: 1px solid #e5e7eb;
+}
+
+/* 詳細ボタン */
+.detail-btn{
+  display:inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background:#16a34a;
+  color:#fff;
+  font-weight:600;
+  font-size:14px;
+  text-decoration:none;
+}
+
+.product-media{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;/* ← 中央寄せ */
+  gap:8px;
+}
+
+.product-img{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+  display:block;
+}
+
+.product-img.placeholder{
+  background:#eee;
+}
+
+.favorite-btn{
+  border:none;
+  background:none;
+  cursor:pointer;
+  font-size:30px;
+  padding:0;
+  line-height:1;
+}
+
+.product-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:16px;
+}
+
+.btn-cart{
+  background:#ff6b6b;
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.btn-cart:hover{
+  opacity:0.9;
+}
+
+.btn-back{
+  color:#555;
+  text-decoration:none;
+  padding:10px 14px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+.btn-back:hover{
+  background:#f5f5f5;
+}
+
+/* ===== 商品新規登録フォーム ===== */
+.product-form{
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.form-title{
+  font-size: 18px;
+  font-weight: 700;
+  margin: 8px 0 14px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label{
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;/*はみ出し防止*/
+}
+
+.form-textarea{
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-input:focus,
+.form-textarea:focus{
+  border-color: #7aa7ff;
+  box-shadow: 0 0 0 3px rgba(122, 167, 255, 0.18);
+}
+
+/* ボタン行（戻る＋登録を横並び） */
+.form-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* ボタン共通 */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+/* 戻る */
+.btn-secondary{
+  background: #9ca3af;
+  color: #fff;
+}
+
+/* 登録 */
+.btn-primary{
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn-danger{
+  background:#ef4444;
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.btn-danger:hover{
+  opacity:0.9;
+}
+
+.contact-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+
+
+
+
+
+
