@@ -365,6 +365,18 @@ button { font: inherit; }
   margin-bottom: 24px;
 }
 
+.btn-outline{ 
+  border:1px solid #bbb; 
+  background:#fff; 
+  color:#333; 
+}
+
+.mypage-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 
 
 
