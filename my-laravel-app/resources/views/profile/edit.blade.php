@@ -1,29 +1,53 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('title', 'アカウント編集')
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+@section('content')
+<div class="products-container">
+  <h1 class="page_title">アカウント編集</h1>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
+  @if (session('status') === 'profile-updated')
+    <div style="margin:12px 0; padding:10px 12px; background:#e8fff7; border:1px solid #b7f5dd; border-radius:8px;">
+      更新しました
     </div>
-</x-app-layout>
+  @endif
+
+  <form method="post" action="{{ route('profile.update') }}" class="product-form">
+    @csrf
+    @method('patch')
+
+    <div class="form-group">
+      <label class="form-label" for="name">ユーザー名</label>
+      <input class="form-input" id="name" name="name" type="text"
+             value="{{ old('name', $user->name) }}" required>
+      @error('name') <div class="text-danger">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="email">Eメール</label>
+      <input class="form-input" id="email" name="email" type="email"
+             value="{{ old('email', $user->email) }}" required>
+      @error('email') <div class="text-danger">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="name_kanji">名前</label>
+      <input class="form-input" id="name_kanji" name="name_kanji" type="text"
+             value="{{ old('name_kanji', $user->name_kanji) }}">
+      @error('name_kanji') <div class="text-danger">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="name_kana">カナ</label>
+      <input class="form-input" id="name_kana" name="name_kana" type="text"
+             value="{{ old('name_kana', $user->name_kana) }}">
+      @error('name_kana') <div class="text-danger">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="form-actions">
+      <a href="{{ route('ec.mypage.index') }}" class="btn btn-secondary">戻る</a>
+      <button type="submit" class="btn btn-primary">更新</button>
+    </div>
+  </form>
+</div>
+@endsection
