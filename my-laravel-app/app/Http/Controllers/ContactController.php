@@ -18,6 +18,7 @@ class ContactController extends Controller
     // 送信処理（EC・ブログ共通）
     public function submitForm(Request $request)
     {
+        //入力チェック
         $request->validate([
             'name'    => 'required|string|max:100',
             'email'   => 'required|email',

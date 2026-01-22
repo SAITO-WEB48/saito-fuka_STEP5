@@ -140,7 +140,7 @@ public function update(\Illuminate\Http\Request $request, \App\Models\Product $p
             Storage::disk('public')->delete($product->image);
         }
 
-        // 保存してパスを入れる（storage/app/public/products/...）
+        // 保存してパスを入れる（保存先 storage/app/public/products/...）
         $path = $request->file('image')->store('products', 'public');
         $validated['image'] = $path;
     }

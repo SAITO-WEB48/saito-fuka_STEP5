@@ -111,7 +111,9 @@
   <a href="{{ url()->previous() }}" class="btn-back">
     戻る
   </a>
-
+ 
+  {{--編集、削除 出品者のみ--}}
+  <if(auth()->check() && auth()->id() ====$product->user_id)
   <a href="{{ route('ec.products.edit', $product) }}" class="btn btn-outline-primary">
   編集
 </a>
