@@ -125,13 +125,7 @@ public function edit(\App\Models\Product $product)
 //更新(update)
 public function update(\Illuminate\Http\Request $request, \App\Models\Product $product)
 {
-    $validated = $request->validate([
-        'name'        => ['required', 'string', 'max:255'],
-        'price'       => ['required', 'integer', 'min:0'],
-        'stock'       => ['required', 'integer', 'min:0'],
-        'description' => ['nullable', 'string'],
-        'image'       => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
-    ]);
+    $validated = $request->validate();
 
    // 新しい画像がアップロードされた時だけ差し替え
     if ($request->hasFile('image')) {
