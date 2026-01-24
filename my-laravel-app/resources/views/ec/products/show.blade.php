@@ -94,29 +94,22 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div>{{-- table-wrap --}}
 
-</div>
 <div class="product-actions">
   @if($product->stock > 0)
     <a href="{{ route('ec.purchase.create', $product) }}" class="btn-cart">
       カートに追加する
     </a>
   @else
-    <button class="btn-cart" disabled>
-      在庫切れ
-    </button>
+    <button class="btn-cart" disabled>在庫切れ</button>
   @endif
 
-  <a href="{{ url()->previous() }}" class="btn-back">
-    戻る
-  </a>
+  <a href="{{ url()->previous() }}" class="btn-back">戻る</a>
  
   {{--編集、削除 出品者のみ--}}
-  <if(auth()->check() && auth()->id() ====$product->user_id)
-  <a href="{{ route('ec.products.edit', $product) }}" class="btn btn-outline-primary">
-  編集
-</a>
+  @if(Auth::check() && Auth::id() === $product->user_id)
+  <a href="{{ route('ec.products.edit', $product) }}" class="btn-back">編集</a>
 
   {{-- 削除ボタン（確認ダイアログ付き） --}}
   <form method="POST"
@@ -125,12 +118,10 @@
         style="display:inline;">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn-danger">
-      削除
-    </button>
+    <button type="submit" class="btn-danger">削除</button>
   </form>
 </div>
 
 <script src="{{ asset('js/favorite.js') }}"></script>
-@endsection
+@endif
 

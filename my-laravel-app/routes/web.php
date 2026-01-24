@@ -50,7 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     
     //ECマイページ
-    Route::get('/ec/mypage', [\App\Http\Controllers\Ec\MypageController::class, 'index'])
+    Route::middleware('auth')
+        ->get('/ec/mypage', [\App\Http\Controllers\Ec\MypageController::class, 'index'])
         ->name('ec.mypage.index');
 
     // 商品一覧

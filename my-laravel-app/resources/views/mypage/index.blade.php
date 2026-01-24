@@ -70,7 +70,7 @@
       <h2 class="mypage-subtitle">＜購入した商品＞</h2>
     </div>
 
-    @if ($purchases->isEmpty())
+    @if ($orders->isEmpty())
       <p style="margin-top:12px;">購入した商品はまだありません。</p>
     @else
       <div class="table-wrap" style="margin-top:12px;">
@@ -84,12 +84,12 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($purchases as $purchase)
+            @foreach ($orders as $order)
               <tr>
-                <td>{{ $purchase->product?->name ?? '（商品が見つかりません）' }}</td>
-                <td>{{ $purchase->product?->description ?? '' }}</td>
-                <td>{{ $purchase->product ? number_format($purchase->product->price) : '' }}</td>
-                <td>{{ $purchase->quantity }}</td>
+                <td>{{ $order->product?->name ?? '（商品が見つかりません）' }}</td>
+                <td>{{ $order->product?->description ?? '' }}</td>
+                <td>{{ $order->product ? number_format($order->product->price) : '' }}</td>
+                <td>{{ $order->quantity }}</td>
               </tr>
             @endforeach
           </tbody>

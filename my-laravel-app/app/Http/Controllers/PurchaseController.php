@@ -38,10 +38,12 @@ class PurchaseController extends Controller
                 if ($fresh->stock < $validated['quantity']) {
                     throw new \RuntimeException('在庫が不足しています');
                 }
-
+                
+                //在庫減らす
                 $fresh->stock -= $validated['quantity'];
                 $fresh->save();
 
+                //ordersに購入履歴を保存
                 Order::create([
                     'user_id' => Auth::id(),
                     'product_id' => $fresh->id,

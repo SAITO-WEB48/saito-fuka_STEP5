@@ -27,7 +27,7 @@
           <td>{{ $product->name }}</td>
         </tr>
         <tr>
-          <th>価格</th>
+          <th>金額</th>
           <td>¥{{ number_format($product->price) }}</td>
         </tr>
         <tr>
@@ -56,4 +56,19 @@
       @endif
     </div>
 
-    <but
+        <div class="form-row" style="margin-top:16px;">
+      <button
+        type="submit"
+        class="btn-cart"
+        {{ $product->stock <= 0 ? 'disabled' : '' }}
+      >
+        購入する
+      </button>
+      <a href="{{ route('ec.products.show', $product) }}" class="btn-back">
+       戻る
+      </a>
+    </div>
+</form>
+
+
+    
